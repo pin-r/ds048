@@ -1,0 +1,54 @@
+<!DOCTYPE html> 
+<head> 
+<title>Dynamic Student Object</title> 
+<script> 
+
+function createStudent() 
+{ 
+
+let student = 
+{ 
+name: prompt("Enter the student's name:"), 
+grade: parseInt(prompt("Enter the student's grade:")), 
+subjects: prompt("Enter the student's subjects separated by commas:").split(',').map(subject => subject.trim()), 
+
+passed: function() 
+{ 
+return this.grade >= 50; 
+}
+}; 
+
+return student; 
+} 
+ 
+function displayInfo(student) 
+{ 
+console.log("Student Details:"); 
+ 
+for (let key in student) 
+{ 
+if (typeof student[key] !== 'function') 
+{ 
+console.log(`${key}: ${student[key]}`); 
+} 
+}  
+
+console.log("Passed:", student.passed() ? "Yes" : "No"); 
+console.log("**********************************************"); 
+}
+//let student = createStudent();  
+
+//student.passed = student.grade >= 40; 
+//displayInfo(student); 
+let numStudents = parseInt(prompt("How many students' details would you like to enter?")); 
+ 
+// Loop to collect details for each student 
+for (let i = 0; i < numStudents; i++) 
+{ 
+console.log(`Enter details for student #${i + 1}:`); 
+let student = createStudent(); // Collect details and return student object 
+displayInfo(student); 
+}
+</script> 
+</head> 
+</html>
