@@ -1,0 +1,52 @@
+npm create vite@latest counter-app
+cd counter-app 
+npm install 
+npm run dev
+
+ App.jsx
+
+
+import React from 'react'; 
+import Counter from './Counter'; // Ensure the correct import path 
+import './App.css'; // Optional, only if you have this file 
+ 
+function App() { 
+return ( 
+<div className="App"> 
+<h1>Welcome to Counter App</h1> 
+<Counter /> 
+</div> 
+); 
+} 
+export default App;
+
+Counter.jsx
+
+
+import React, { useState, useEffect } from 'react'; 
+const Counter = () => { 
+const [count, setCount] = useState(0); 
+ 
+// Simulate fetching initial data for the Counter component 
+useEffect(() => { 
+setTimeout(() => { 
+setCount(0); // Set initial value after 2 seconds 
+}, 2000); 
+}, []); 
+ 
+return ( 
+<div> 
+<h1>Counter: {count}</h1> 
+<button onClick={() => setCount(count + 
+1)}>Increment</button> 
+<button onClick={() => setCount(count - 
+1)}>Decrement</button> 
+<button onClick={() => setCount(count * 2)}>Double</button> 
+<button onClick={() => setCount(0)}>Reset</button> 
+</div> 
+); 
+}; 
+ 
+export default Counter;
+
+npx create-next-app@latest counter-app 
